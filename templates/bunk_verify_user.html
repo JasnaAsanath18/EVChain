@@ -1,0 +1,49 @@
+{% include 'bunk_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain3.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+				
+<div style="background-color: black;opacity: 0.9;padding: 20px;border-radius: 10px;">
+
+					<table class="table" style="width: 800px;margin-left: 100px;">
+						<h1>User</h1>
+	
+			<tr>
+				<th>Name</th>
+				<th>Place</th>
+				<th>Phone Number</th>
+				<th>Email</th>
+				<th>Post</th>
+				<th>Pin</th>
+                <th>Gender</th>
+			</tr>
+			{% for row in data['mechanic'] %}
+			<tr>
+				<td>{{ row['firstname'] }}  {{ row['lastname'] }}</td>
+				<td>{{ row['place'] }}</td>
+				<td>{{ row['phone'] }}</td>
+				<td>{{ row['email'] }}</td>
+				<td>{{ row['post'] }}</td>
+				<td>{{ row['pin'] }}</td>
+                <td>{{ row['gender'] }}</td>
+				{% if row['usertype']=='pending' %}
+				<td><a href="?action=approve&cid={{ row['user_id'] }}" class="btn btn-success">Approve</a></td>
+				<td><a href="?action=reject&cid={{ row['user_id'] }}" class="btn btn-info">Reject</a></td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</center>
+</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+{% include 'footer.html' %}

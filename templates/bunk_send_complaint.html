@@ -1,0 +1,59 @@
+{% include 'bunk_header.html' %}
+ <center> 
+
+	<div class="allcontainrequired">	
+		<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain3.jpg" alt="oldcar" >
+				
+				
+				<div class="carousel-caption">
+					
+          
+					
+	<form method="post" style="margin-top: -22em;">
+		
+		<table style="width: 1000px;" >
+			
+			<h1>Complaint</h1>
+            
+                <tr>
+                <td align="center"><Textarea name="complaint" required class="form-control" style="width:380px;height: 130px;"></Textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="sub_send" value="Send" class="btn btn-danger" style="margin:10px;width: 100px;"></td>
+            </tr>
+            </table>
+		</form>
+			<br><br>
+			<div style="background-color: black;opacity: 0.9;padding: 20px;border-radius: 10px;">
+			<table class="table" >
+				<h1>View Previous Complaints</h1>
+				<tr>
+					<th>Sl no</th>
+					<th>Complaint</th>
+					<th>Reply</th>
+					<th>Date</th>
+		
+					
+				</tr>
+				{% for row in data['comp'] %}
+				<tr>
+					<td>{{loop.index}}</td>
+					<td>{{ row['complaint'] }}</td>
+					<td>{{ row['reply'] }}</td>
+					<td>{{ row['date'] }}</td>
+					
+				</tr>
+				{% endfor %}	
+			</table>
+		</div>
+		
+	</center>
+</div>
+			</div>
+		</div>
+		</div>
+	</div>
+{% include 'footer.html' %}

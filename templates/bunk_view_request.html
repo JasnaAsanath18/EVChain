@@ -1,0 +1,48 @@
+{% include 'bunk_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain3.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+					<h1 style="margin-left: 200px;">Requests</h1>
+	<table class="table" style="width: 900px;margin-left: 200px">
+		
+		<tr>
+			<th>User Name</th>
+			
+			<th>Date</th>
+			<th>Place</th>
+			<th>Phone Number</th>
+			<th>Amount</th>
+			<th>View Payment</th>
+			<th>Send Service charge</th>
+		</tr>
+		{% for row in data['req'] %}
+		<tr>
+			<td>{{ row['firstname'] }} {{ row['lastname'] }}</td>
+			
+			<td>{{ row['date'] }}</td> 
+			<td>{{ row['place'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			<td>{{ row['amount'] }}</td>
+			
+			
+			<td><a href="bunk_view_payment?rrequest_id={{row['rrequest_id']}}" class="btn btn-info">View</a></td>
+			<td><a href="bunk_send_service_charge?rrequest_id={{row['rrequest_id']}}" class="btn btn-info">Send</a></td>
+			
+
+
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+{% include 'footer.html' %}

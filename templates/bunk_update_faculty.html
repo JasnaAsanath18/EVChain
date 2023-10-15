@@ -1,0 +1,30 @@
+{% include 'bunk_header.html' %}
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain3.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+	<form method="post">
+		<h1 style="color: azure">Update Faculty</h1>
+		<table class="" style="width: 500px;margin-left: 300px;color: white;">
+			<tr>
+				<th>Name</th>
+				<td><input type="text" name="name" class="form-control" required="" value="{{data['up'][0]['fac_name']}}" style="margin:5px;"></td>
+			</tr>
+				<th>Description</th>
+				<td><input type="text" name="desc" class="form-control" required="" value="{{data['up'][0]['description']}}" style="margin:5px;"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="update" value="Update" class="btn btn-danger" style="margin:10px;width: 100px;"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+</div>
+			</div>
+		</div>
+		</div>
+</div>
+{% include 'footer.html' %}

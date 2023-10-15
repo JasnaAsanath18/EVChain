@@ -1,0 +1,47 @@
+{% include 'admin_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain1.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+				
+					<div style="background-color: black;opacity: 0.8;padding: 20px;border-radius: 10px;margin-left: 100px;">
+
+					<table class="table" style="width: 800px;margin-left: 0px;padding-top: 100PX;">
+						<h1>Recharge Station</h1>
+	
+			<tr>
+				<th>Name</th>
+				<th>Place</th>
+				<th>Phone Number</th>
+				<th>Email</th>
+				<th>Latitude</th>
+				<th>Longitude</th>
+			</tr>
+			{% for row in data['mechanic'] %}
+			<tr>
+				<td>{{ row['center_name'] }}</td>
+				<td>{{ row['place'] }}</td>
+				<td>{{ row['phone'] }}</td>
+				<td>{{ row['email'] }}</td>
+				<td>{{ row['latitude'] }}</td>
+				<td>{{ row['longitude'] }}</td>
+				{% if row['usertype']=='pending' %}
+				<td><a href="?action=approve&cid={{ row['center_id'] }}" class="btn btn-success">Approve</a></td>
+				<td><a href="?action=reject&cid={{ row['center_id'] }}" class="btn btn-info">Reject</a></td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+		</div>
+</center>
+</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+{% include 'footer.html' %}

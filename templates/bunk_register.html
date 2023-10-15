@@ -1,0 +1,136 @@
+{% include 'public_header.html' %}
+ <center> 
+
+	<div class="allcontainrequired	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain4.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+
+
+
+				<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3MPnSnyWwNmpnVEFkaddVvy_GWtxSejs&sensor=false"></script>
+        <script type="text/javascript">
+            // window.onload = function () {
+            function myFunction() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(9.9763482, 76.286272),
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var latlngbounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                google.maps.event.addListener(map, 'click', function (e) {
+                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                    document.getElementById('slati').value = e.latLng.lat();
+                    document.getElementById('elongi').value = e.latLng.lng();
+
+
+                });
+            }
+        </script>
+				
+
+      
+	<form method="post">
+		<table style="width: 1000px;margin-top: -100px;color: black;" >
+			<tr>
+				<td>
+					<h2 style="color: azure" > Register Here</h2><br>
+			
+	<table class="table" style="width: 500px;color: white">
+		<tr>
+			<td>Name</td>
+			<td><input type="text" name="firstname" class="form-control" required></td>
+		</tr>
+		<!-- <tr>
+			<td>LastName</td>
+			<td><input type="text" name="lastname"class="form-control" required></td>
+		</tr>required -->
+		<tr>
+			<td>Place</td>
+			<td><input type="text" name="place"class="form-control"required></td>	
+		</tr>
+		<tr>
+			<td>Phone</td>
+			<td><input type="text" name="phone"class="form-control"required></td>	
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="text" name="email"class="form-control"required></td>	
+		</tr>
+
+		<tr>
+			<td>Latitude</td>
+			<td><input type="text" name="latitude" id="slati"class="form-control"></td>	
+			<td><a onclick="myFunction();" class="btn btn-danger"required>View Map</a></td>
+		</tr>
+		<tr>
+			<td>Longitude</td>
+			<td><input type="text" name="longitude" id="elongi"class="form-control"required></td>	
+		</tr>
+		<tr>
+			<td>Price Per Unit</td>
+			<td><input type="text" name="ppu" id="ppu"class="form-control"required></td>
+		</tr>
+		<tr>
+			<td>Charging Power</td>
+			<td><input type="text" name="power" id="power"class="form-control"required></td>
+		</tr>
+		<tr>
+			<td>User name</td>
+			<td><input type="text" name="username"class="form-control"required></td>	
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="password" name="password"class="form-control"required></td>	
+		</tr>
+		<tr>
+			<td align="center"><input type="submit" name="submit" value="Register" class="btn btn-success"></td>
+		 	<td align="center"><input type="reset" name="reset" value="Reset" class="btn btn-danger"></td>
+		 </tr>
+	</table>
+		</td>
+		<td>
+			<div id="dvMap" style="width: 600px; height: 400px"></div>
+		</td>
+			</tr>
+		</table>
+			
+			</form>
+				
+
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD3MPnSnyWwNmpnVEFkaddVvy_GWtxSejs&sensor=false"></script>
+        <script type="text/javascript">
+            // window.onload = function () {
+            function myFunction() {
+                var mapOptions = {
+                    center: new google.maps.LatLng(9.9763482, 76.286272),
+                    zoom: 14,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var infoWindow = new google.maps.InfoWindow();
+                var latlngbounds = new google.maps.LatLngBounds();
+                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                google.maps.event.addListener(map, 'click', function (e) {
+                    alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+                    document.getElementById('slati').value = e.latLng.lat();
+                    document.getElementById('elongi').value = e.latLng.lng();
+
+
+                });
+            }
+        </script>
+
+	<div class="carousel-caption">
+</center>
+</div>
+			</div>
+			
+		</div>
+		</div>
+	</div>
+
+
+{% include 'footer.html' %}

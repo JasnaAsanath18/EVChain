@@ -1,0 +1,44 @@
+{% include 'admin_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain1.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+					<div style="background-color: black;opacity: 0.8;padding: 20px;border-radius: 10px;padding-left: 50px;padding-right: 50px;margin-top: -20em;">
+	<table class="table" style="width: 900px;">
+		<h1>Complaints</h1>
+		<tr>
+			<th>Sender</th>
+			<th>Complaint</th>
+			<th>Date</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>Replay</th>
+		</tr>
+		{% for row in data['comp'] %}
+		<tr>
+			<td>{{ row['sender'] }}</td>
+			<td>{{ row['complaint'] }}</td>
+			<td>{{ row['date'] }}</td>
+			<td>{{ row['email'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			{%if row['reply']=='pending'%}
+			<td><a href="admin_send_reply?complaint_id={{row['complaint_id']}}" class="btn btn-info">Reply</a></td>
+			{%else%}
+			<td>{{ row['reply'] }}</td>
+			{%endif%}
+		</tr>
+		{% endfor %}	
+	</table>
+	</div>
+</center>
+</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+{% include 'footer.html' %}

@@ -1,0 +1,133 @@
+<!--  <table width="200" border="1" id="customers">-->
+<!--    <tr>-->
+<!--      <th scope="col">NAME</th>-->
+
+<!--      <td scope="col">{{v[3]}} {{v[4]}}&nbsp;</td>-->
+<!--    </tr>-->
+
+<!--    <tr>-->
+<!--      <th>Car Model&nbsp;</th>-->
+<!--      <td>&nbsp;{{v[0]}}</td>-->
+
+<!--    </tr> <tr>-->
+<!--      <th>Seater</th>-->
+<!--      <td>&nbsp;{{v[1]}}</td>-->
+
+<!--    </tr> <tr>-->
+<!--      <th>Reg No.</th>-->
+<!--      <td>&nbsp;{{v[5]}}</td>-->
+
+<!--    </tr>-->
+<!--<tr>-->
+<!--      <th>Price</th>-->
+<!--      <td>&nbsp;{{amts}}</td>-->
+
+<!--    </tr>-->
+<!--<tr>-->
+<!--      <th>Predicted % </th>-->
+<!--      <td>&nbsp;{{val}}</td>-->
+
+<!--    </tr>-->
+
+<!--  </table>-->
+
+
+
+
+
+
+
+
+?val=msg,v=res1,amts=new_amount
+
+
+
+
+
+
+
+
+
+
+	newtime = float(times) + float(hours) + float('0.' + minutes_str)
+	# x = round(float(newtime), 2)
+	print(newtime)
+	last_two_digits = int(newtime * 100 % 100)
+	print(last_two_digits)
+	newtime =str(newtime).replace(".", ":")
+
+
+
+
+@api.route('/booknow')
+def booknow():
+	data = {}
+	logid = request.args['logid']
+	center = request.args['center']
+	# date = request.args['date']
+	time = request.args['time']
+	times = time.replace(":", ".")
+
+	clevel = request.args['clevel']
+	dlevel = request.args['dlevel']
+	bcapacity=request.args['bcapacity']
+	data = estimate_charging_time(int(clevel), int(dlevel),int(bcapacity))
+	ctym = data['charging_time']
+	print("ctym :",ctym)
+	energy_consumed = data['energy_consumed']
+	print(energy_consumed, "EEEEEEEEEEEEnergy", type(energy_consumed))
+	l = "select priceperunit from charging_center where center_id='%s'" % (center)
+	ppu = select(l)
+	val = ppu[0]['priceperunit']
+	val = float(val)
+	print(val, "VAAAAAAAAAL", type(val))
+	print(ppu, "PPPPPPPPPPPPRicePPPPPPPPPPPerUnit")
+	amount = energy_consumed * val
+	print(amount, "Amouuuuuuuuuuuunt")
+
+	# Convert charging time in hours to minutes
+	ctym_minutes = int(ctym * 60)
+
+	# Calculate minutes and hours
+	hours, minutes = divmod(ctym_minutes, 60)
+
+	# Format minutes as a string with two digits
+	minutes_str = '{:02d}'.format(minutes)
+	print("estimated hours in minute",minutes_str)
+
+	
+	# Create new time variable with formatted charging time
+
+	# convert float time to string and remove decimal part
+	#times = str(times).split(".")[0]
+
+	
+	newtime = float(times) + float(hours) + float('0.' + minutes_str)
+	# x = round(float(newtime), 2)
+	print(newtime)
+	last_two_digits = int(newtime * 100 % 100)
+	print(last_two_digits)
+	newtime =str(newtime).replace(".", ":")
+
+	# print(x)
+
+	check = "SELECT COUNT(*) as counts FROM booking WHERE `date` = curdate() AND (time(time) BETWEEN '%s' AND '%s' OR time(end_time) BETWEEN '%s' AND '%s' OR '%s' BETWEEN time(time) AND time(end_time) OR '%s' BETWEEN time(time) AND time(end_time))and center_id='%s'" % (time, newtime, time, newtime, time, newtime, center)
+	print(check)
+	check1 = select(check)
+	count = check1[0]['counts']
+	if int(count) == 0:
+		q1 = "INSERT INTO booking VALUES (NULL, '%s', (SELECT user_id FROM user WHERE login_id='%s'), curdate(), '%s', 'pending', '%s','%s')" % (center, logid, time, amount, newtime)
+		res = insert(q1)
+		if res:
+			data['status'] = "success"
+			data['estimated_time'] = ctym
+		else:
+			data['status'] = "failed"
+	else:
+		data['status'] = "failed"
+		
+	return str(data)
+
+
+
+

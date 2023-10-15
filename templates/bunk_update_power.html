@@ -1,0 +1,32 @@
+{% include 'bunk_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain3.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+{% if data['res'] %}
+                    <form action="" method="post">
+                        <h2>Update Charging Power</h2>
+                        <table>
+                            <tr>
+                                <th>Charging Power </th>
+                                <td><input type="text" name="power" value="{{data['res'][0]['power']}}" class="form-control"></td>
+                            </tr>
+                             <tr>
+                                <th></th>
+                                <td><input type="submit" name="submit" value="Update" class="btn btn-success"></td>
+                            </tr>
+                        </table>
+                    </form>
+{%endif%}
+                </div>
+			</div>
+			
+		</div>
+    </div>
+    </div>
+</center>
+{% include 'footer.html' %}

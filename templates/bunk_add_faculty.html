@@ -1,0 +1,60 @@
+{% include 'bunk_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain3.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+	<form method="post" style="margin-top: -200px;">
+		<h1 style="color: azure">Add Faculty</h1>
+		<table class="" style="width: 500px;margin-left: 200px;color: white;">
+		
+			<tr>
+				<th>Name</th>
+				<td><input type="text" name="name" class="form-control" required="" style="margin:5px;"></td>
+			</tr>
+          	<tr>
+				<th>Description</th>
+				<td><input type="text" name="desc" class="form-control" required="" style="margin:5px;"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" name="submit" style="margin:10px;" value="Add" class="btn btn-danger"></td>
+			</tr>
+		</table>
+<br><br>
+		<div style="background-color: black;opacity: 0.9;padding: 20px;border-radius: 10px;margin-left: 100px;">
+
+        <table class="table" style="width: 500px;margin-left: 50px">
+            <h1>View Faculty</h1>
+            <tr>
+				<th>Sl no</th>
+				<th>Center</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Update</th>
+                <th>Delete</th>
+                
+            </tr>
+            {% for row in data['comp'] %}
+            <tr>
+				<td>{{loop.index}}</td>
+                <td>{{ row['center_name'] }}</td>
+                <td>{{ row['fac_name'] }}</td>
+				<td>{{ row['description'] }}</td>
+                <td><a href="bunk_update_faculty?type_id={{ row['faculty_id'] }}" class="btn btn-info">Update</a></td>
+                <td><a href="bunk_delete_faculty?type_id={{ row['faculty_id'] }}" class="btn btn-info">Delete</a></td>
+            </tr>
+            {% endfor %}	
+        </table>
+		</div>
+	</form>
+</center>
+</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+{% include 'footer.html' %}

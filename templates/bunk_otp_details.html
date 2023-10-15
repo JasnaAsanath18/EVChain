@@ -1,0 +1,55 @@
+{% include 'bunk_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain3.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+					<div style="background-color: black;opacity: 0.9;padding: 20px;border-radius: 10px;margin-top: -15em;">
+					<h1>Booking</h1>
+	<table class="table" style="width: 900px;">
+		
+		<tr>
+            <th>Sl no</th>
+			<th>User Name</th>
+			
+			<th>Date</th>
+			<th>Time</th>
+			<th>Status</th>
+			<th>Price</th>
+	
+		</tr>
+		{% for row in data['req'] %}
+		<tr>
+
+            <td>{{loop.index}}</td>
+			<td>{{ row['firstname'] }} {{ row['lastname'] }}</td>
+			
+					
+			<td>{{ row['date'] }}</td> 
+			<td>{{ row['time'] }}</td>
+			<td>{{ row['status'] }}</td>
+			<td>{{ row['amount'] }}</td>
+		{% if row['status']=='pending' %}
+			<td><a href="?action=accept&bid={{ row['booking_id'] }}&uid={{ row['user_id'] }}" class="btn btn-success">Accept</a></td>
+			<td><a href="?action=reject&bid={{ row['booking_id'] }}&uid={{ row['user_id'] }}" class="btn btn-info">Reject</a></td>
+		{%endif%}
+		{% if row['status']=='booked' %}
+			<!-- <td><a href="bunk_addprice?bid={{ row['booking_id'] }}&uid={{ row['user_id'] }}">Add Service Charge</a></td> -->
+		{% endif %}
+
+		</tr>
+		{% endfor %}
+	</table>
+	</div>
+
+</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+    </center>
+{% include 'footer.html' %}

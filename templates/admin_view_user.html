@@ -1,0 +1,46 @@
+{% include 'admin_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain1.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+					<div style="background-color: black;opacity: 0.8;padding: 20px;border-radius: 10px;margin-left: 100px;padding-left: 50px;padding-right: 50px;">
+					<h1>USERS</h1>
+	<table class="table" style="width: 500px;">
+		<tr>
+			<th>FirstName</th>
+			<th>Lastname</th>
+			<th>Place</th>
+			<th>Post</th>
+			<th>Pin</th>
+			<th>Gender</th>
+			<th>Phone Number</th>
+			<th>Email</th>
+			
+		</tr>
+		{% for row in data['user'] %}
+		<tr>
+			<td>{{ row['firstname'] }}</td>
+			<td>{{ row['lastname'] }}</td>
+			<td>{{ row['place'] }}</td>
+			<td>{{ row['post'] }}</td>
+			<td>{{ row['pin'] }}</td>
+			<td>{{ row['gender'] }}</td>
+			<td>{{ row['phone'] }}</td>
+			<td>{{ row['email'] }}</td>
+
+		</tr>
+		{% endfor %}
+	</table>
+	</div>
+</center>
+</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+{% include 'footer.html' %}

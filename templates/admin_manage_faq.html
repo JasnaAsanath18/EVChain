@@ -1,0 +1,32 @@
+{% include 'admin_header.html' %}
+
+<center>
+	<div class="allcontain">
+	<div id="carousel-up" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner " role="listbox">
+			<div class="item active">
+				<img src="/static/image/evchain1.jpg" alt="oldcar" >
+				<div class="carousel-caption">
+	<form method="post">
+		<table class="table" style="width: 500px;margin-left: 300px;color: white;">
+			<tr>
+				<th>Question</th>
+				<td><input type="text" name="question" class="form-control" required=""></td>
+			</tr>
+            <tr>
+				<th>Answer</th>
+				<td><input type="text" name="answer" class="form-control" required=""></td>
+			</tr>
+			<tr>
+				<td><input type="submit" name="submit" value="Send" class="btn btn-danger"></td>
+			</tr>
+		</table>
+	</form>
+</center>
+</div>
+			</div>
+			
+		</div>
+		</div>
+</div>
+{% include 'footer.html' %}
